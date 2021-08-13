@@ -4,7 +4,7 @@ from SQLHelper import SQLHelper
 
 
 class WhereCase(unittest.TestCase):
-    def test_should_return_where_with_twos_condition(self):
+    def test_should_return_where_with_two_condition(self):
         sut = SQLHelper(schema='register', table='user')
 
         conditions = {

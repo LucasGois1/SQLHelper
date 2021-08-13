@@ -121,3 +121,21 @@ class SQLHelper(SQLHelperIInterface):
 
         self.base_query += core[:-1]
         return self
+
+    def delete(self):
+        core = f"DELETE FROM {self.schema + '.' if self.schema else ''}{self.table}"
+        self.base_query = core
+        return self
+
+    def update(self, args: Dict[str, Any]):
+        core = f"UPDATE {self.schema + '.' if self.schema else ''}{self.table} SET"
+
+        for column, value in args.items():
+            core += f" {column} = "
+            if type(value) == int or type(value) == float:
+                core += f"{value},"
+            else:
+                core += f"'{value}',"
+
+        self.base_query = core[:-1] + ' '
+        return self
