@@ -6,6 +6,12 @@ class SQLHelperIInterface:
     __metaclass__ = ABCMeta
 
     @abstractmethod
+    def execute(self): raise NotImplementedError()
+
+    @abstractmethod
+    def return_all(self): raise NotImplementedError()
+
+    @abstractmethod
     def select(self, columns: List = None): raise NotImplementedError()
 
     @abstractmethod
@@ -15,4 +21,7 @@ class SQLHelperIInterface:
     def query(self) -> str: raise NotImplementedError()
 
     @abstractmethod
-    def insert(self, arg: Dict[str, Any]): raise NotImplementedError()
+    def insert_one(self, arg: Dict[str, Any]): raise NotImplementedError()
+
+    @abstractmethod
+    def insert_many(self, arg: List[Dict[str, Any]]): raise NotImplementedError()
